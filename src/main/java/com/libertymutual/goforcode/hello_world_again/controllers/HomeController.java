@@ -8,11 +8,11 @@ import com.libertymutual.goforcode.hello_world_again.models.SurveyResults;
 
 @Controller
 public class HomeController {
-	
-	// Create a new SurveyResults Object 
-	
+
+	// Create a new SurveyResults Object
+
 	private SurveyResults results = new SurveyResults();
-	
+
 	// The defaultPage method will return the page templates/potato.html
 	// For anything hitting "/" - or localhost:8080
 
@@ -36,7 +36,6 @@ public class HomeController {
 
 		return carbs;
 	} // closes twiceBaked
-	
 
 	// The survey ModelAndView will handle survey results
 	// It will display the name of the selection from the user at /survey
@@ -47,32 +46,32 @@ public class HomeController {
 		ModelAndView survey = new ModelAndView();
 		survey.setViewName("results");
 		survey.addObject("userResponse", answer);
-		
+
 		if (answer.equals("Russet")) {
 			results.registerRussetVote();
-		} 
+		}
 		if (answer.equals("Golden")) {
 			results.registerGoldenVote();
-		} 
+		}
 		if (answer.equals("Sweet")) {
 			results.registerSweetVote();
 		}
-		
+
 		survey.addObject("results", results);
-		
+
 		return survey;
 	} // closes survey
-	
+
 	// The reset ModelAndView will set survey results back to zero
-	
+
 	@RequestMapping("/reset")
 	public ModelAndView reset() {
 		ModelAndView reset = new ModelAndView();
-		
+
 		results.eraseAllVotes();
 		reset.addObject("results", results);
-		
+
 		return reset;
-	}	
+	}
 
 } // closes class

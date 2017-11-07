@@ -45,5 +45,5 @@ public class SurveyResults {
 		russetCount = 0;
 		goldenCount = 0;
 		sweetCount = 0;
-	}	
+	}
 }
