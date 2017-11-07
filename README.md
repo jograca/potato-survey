@@ -1,4 +1,4 @@
-#potato-survey Java Web App
+potato-survey Java Web App
 
-##G4C Project from November 7th
+G4C Project from November 7th
 
