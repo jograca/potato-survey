@@ -4,15 +4,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.libertymutual.goforcode.hello_world_again.models.SurveyResults;
+
 @Controller
 public class HomeController {
-
-	// Instance variables - accessible by the whole class
 	
-	private int russetCount;
-	private int goldenCount;
-	private int sweetCount;
-	// private int noneCount;
+	// Create a new SurveyResults Object 
+	
+	private SurveyResults results = new SurveyResults();
 	
 	// The defaultPage method will return the page templates/potato.html
 	// For anything hitting "/" - or localhost:8080
@@ -37,6 +36,7 @@ public class HomeController {
 
 		return carbs;
 	} // closes twiceBaked
+	
 
 	// The survey ModelAndView will handle survey results
 	// It will display the name of the selection from the user at /survey
@@ -49,20 +49,16 @@ public class HomeController {
 		survey.addObject("userResponse", answer);
 		
 		if (answer.equals("Russet")) {
-			// russetCount = russetCount + 1;
-			// Add and assign operator (option:
-			russetCount += 1;
+			results.registerRussetVote();
 		} 
 		if (answer.equals("Golden")) {
-			goldenCount = goldenCount + 1;
+			results.registerGoldenVote();
 		} 
 		if (answer.equals("Sweet")) {
-			sweetCount = sweetCount + 1;
+			results.registerSweetVote();
 		}
 		
-		survey.addObject("russetCount", russetCount);
-		survey.addObject("goldenCount", goldenCount);
-		survey.addObject("sweetCount", sweetCount);
+		survey.addObject("results", results);
 		
 		return survey;
 	} // closes survey
@@ -71,16 +67,10 @@ public class HomeController {
 	
 	@RequestMapping("/reset")
 	public ModelAndView reset() {
-		
 		ModelAndView reset = new ModelAndView();
 		
-		russetCount = 0;
-		goldenCount = 0;
-		sweetCount = 0;
-		
-		reset.addObject("russetCount", russetCount);
-		reset.addObject("goldenCount", goldenCount);
-		reset.addObject("sweetCount", sweetCount);
+		results.eraseAllVotes();
+		reset.addObject("results", results);
 		
 		return reset;
 	}	
