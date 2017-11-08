@@ -11,6 +11,6 @@ An MVC Controller Sample in Spring Boot:
 * Off the HomePage, the Link starts some Controller logic
 * Sends you to /twice-baked.html, which has some Mustache substitution for an adjective and degree for which temperature you should cook to
 * The survey ModelAndView will handle survey results, which calls into another class SurveyResults to pull additional calcultated information
-* The SurveyRecults class (under models) can provide: registered votes for each potato, returned votes for each potato, and can be invoked to reset all potatoe votes
+* The SurveyRecults class (under models) can provide: registered votes for each potato, returned votes for each potato, and can be invoked to reset all potato votes
 
 **Additional Explanation forthcoming 11/8**
